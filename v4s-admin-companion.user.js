@@ -6,6 +6,8 @@
 // @author       GA.Mind, GM.Gripan
 // @match        https://admin.vision4s.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=vision4s.com
+// @updateURL    https://github.com/JuztFlow/v4s-admin-companion/raw/main/v4s-admin-companion.user.js
+// @downloadURL  https://github.com/JuztFlow/v4s-admin-companion/raw/main/v4s-admin-companion.user.js
 // ==/UserScript==
 
 (function () {
@@ -44,8 +46,8 @@
       var rwtSubMenu = createSubMenu("RWT", "RWT");
 
       // Create additional items for the "RWT" sub-menu
-      var rwtItem1 = createMenuItem("RWT Item 1", "#", url + "rwt_default.html");
-      var rwtItem2 = createMenuItem("RWT Item 2", "#", "Message");
+      var rwtItem1 = createMenuItem("Default Case", "#", url + "rwt_default.html");
+      var rwtItem2 = createMenuItem("Second Account", "#", url + "rwt_second_account.html");
       var rwtItem3 = createMenuItem("RWT Item 3", "#", "Message");
 
       // Append the additional items to the "RWT" sub-menu
