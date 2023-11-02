@@ -200,7 +200,7 @@
               // If the response is successful, parse the response text as HTML
               return response.text();
             } else {
-              alert("Failed to fetch the HTML template file from " + presetUrl);
+              alert("Failed to fetch the HTML template file from " + presetURL);
             }
           })
           .then((htmlText) => {
