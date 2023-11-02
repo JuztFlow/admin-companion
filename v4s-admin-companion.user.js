@@ -36,7 +36,7 @@
 
       // Create additional items for the "Battle Mode" sub-menu
       var battleModeItem1 = createMenuItem("Report Response", "#", url + "report_response.html");
-      var battleModeItem2 = createMenuItem("Ban Response", "#", url +  "ban_response.html");
+      var battleModeItem2 = createMenuItem("Ban Response", "#", url + "ban_response.html");
 
       // Append the additional items to the "Battle Mode" sub-menu
       battleModeSubMenu.querySelector("ul").appendChild(battleModeItem1);
@@ -48,7 +48,7 @@
       // Create additional items for the "RWT" sub-menu
       var rwtItem1 = createMenuItem("Default Case", "#", url + "rwt_default.html");
       var rwtItem2 = createMenuItem("Second Account", "#", url + "rwt_second_account.html");
-      var rwtItem3 = createMenuItem("RWT Item 3", "#", "Message");
+      var rwtItem3 = createMenuItem("RWT Item 3", "#", url + "ban_response.html");
 
       // Append the additional items to the "RWT" sub-menu
       rwtSubMenu.querySelector("ul").appendChild(rwtItem1);
@@ -59,8 +59,8 @@
       var TechnicalSubMenu = createSubMenu("Technical", "Technical");
 
       // Create additional items for the "RWT" sub-menu
-      var TechnicalIssuesItem1 = createMenuItem("Technical Item 1", "#", "Message");
-      var TechnicalIssuesItem2 = createMenuItem("Technical Item 2", "#", "Message");
+      var TechnicalIssuesItem1 = createMenuItem("Technical Item 1", "#", url + "ban_response.html");
+      var TechnicalIssuesItem2 = createMenuItem("Technical Item 2", "#", url + "ban_response.html");
 
       // Append the additional items to the "RWT" sub-menu
       TechnicalSubMenu.querySelector("ul").appendChild(TechnicalIssuesItem1);
@@ -70,8 +70,8 @@
       var AccountSubMenu = createSubMenu("Account", "Account");
 
       // Create additional items for the "RWT" sub-menu
-      var AccountIssuesItem1 = createMenuItem("Account Item 1", "#", "Message");
-      var AccountIssuesItem2 = createMenuItem("Account Item 2", "#", "Message");
+      var AccountIssuesItem1 = createMenuItem("Account Item 1", "#", url + "ban_response.html");
+      var AccountIssuesItem2 = createMenuItem("Account Item 2", "#", url + "ban_response.html");
 
       // Append the additional items to the "RWT" sub-menu
       AccountSubMenu.querySelector("ul").appendChild(AccountIssuesItem1);
