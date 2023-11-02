@@ -35,8 +35,8 @@
       var battleModeSubMenu = createSubMenu("Battle Mode", "Battle Mode");
 
       // Create additional items for the "Battle Mode" sub-menu
-      var battleModeItem1 = createMenuItem("Battle Mode Item 1", "#", "You Were Battlemodebanned1");
-      var battleModeItem2 = createMenuItem("Battle Mode Item 2", "#", "You Were Battlemodebanned2");
+      var battleModeItem1 = createMenuItem("Report Response", "#", url + "report_response.html");
+      var battleModeItem2 = createMenuItem("Ban Response", "#", url +  "ban_response.html");
 
       // Append the additional items to the "Battle Mode" sub-menu
       battleModeSubMenu.querySelector("ul").appendChild(battleModeItem1);
