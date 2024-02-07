@@ -43,7 +43,7 @@ const template_repository_url = "https://api.github.com/repos/JuztFlow/v4s-admin
       const object_store = transaction.objectStore("templates")
       const result = await object_store.getAll()
       await transaction.done
-      return this.getMapFromResult(result)
+      return await this.getMapFromResult(result)
     }
 
     async getMapFromResult(result) {
@@ -66,6 +66,20 @@ const template_repository_url = "https://api.github.com/repos/JuztFlow/v4s-admin
       const template_repo_metadata = await this.#getTemplateRepoMetadata(url)
       for (const entry of template_repo_metadata) {
         await this.#processTemplateRepoMetadataEntry(entry)
+      }
+      await this.#deleteObsoleteTemplates(template_repo_metadata)
+    }
+
+    async #deleteObsoleteTemplates(template_repo_metadata) {
+      const database = await this.#dbConnectionPromise
+      const transaction = database.transaction("templates", "readonly")
+      const object_store = transaction.objectStore("templates")
+      const result = await object_store.getAll()
+      await transaction.done
+      for (const template_db of result) {
+        if (!template_repo_metadata.some((template_metadata) => template_metadata.name === template_db.full_template_name)) {
+          await this.#deleteTemplateFromDB(template_db.full_template_name)
+        }
       }
     }
 
@@ -117,6 +131,14 @@ const template_repository_url = "https://api.github.com/repos/JuztFlow/v4s-admin
         hash: hash,
         content: content,
       })
+      await transaction.done
+    }
+
+    async #deleteTemplateFromDB(full_name) {
+      const database = await this.#dbConnectionPromise
+      const transaction = database.transaction("templates", "readwrite")
+      const object_store = transaction.objectStore("templates")
+      await object_store.delete(full_name)
       await transaction.done
     }
 
