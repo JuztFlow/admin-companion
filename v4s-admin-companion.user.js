@@ -307,7 +307,7 @@ const template_repository_url = "https://api.github.com/repos/JuztFlow/v4s-admin
             const saved_gm_name = localStorage.getItem("gm-name")
             let final_content = content + "<div><br></div><div>"
             final_content += saved_phrase ? saved_phrase : ""
-            final_content += "</div><div><br></div>"
+            final_content += "</div>"
             final_content += saved_gm_name ? saved_gm_name : ""
             text_editor_area.innerHTML = "" + final_content
           }
