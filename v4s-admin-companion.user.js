@@ -188,7 +188,7 @@ const template_repository_url = "https://api.github.com/repos/JuztFlow/v4s-admin
   class PageElementManager {
     #template_repository
     #observer = new MutationObserver(() => {
-      if (!this.#elementIsPresent("#ticket-templates") && this.#elementIsPresent(".angular-editor-wrapper.show-placeholder")) {
+      if (!this.#elementIsPresent("#ticket-templates") && this.#elementIsPresent(".angular-editor-wrapper")) {
         this.#deleteReadingDirectionSwitcher()
         this.#removeInputFields()
         this.#addTemplatesToNav()
@@ -197,7 +197,7 @@ const template_repository_url = "https://api.github.com/repos/JuztFlow/v4s-admin
       if (
         !this.#elementIsPresent("#gm-name") &&
         this.#elementIsPresent(".header-container") &&
-        !this.#elementIsPresent(".angular-editor-wrapper.show-placeholder")
+        !this.#elementIsPresent(".angular-editor-wrapper")
       ) {
         this.#deleteReadingDirectionSwitcher()
         this.#removeTemplatesFromNav()
