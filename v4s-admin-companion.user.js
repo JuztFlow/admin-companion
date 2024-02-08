@@ -298,12 +298,18 @@ const template_repository_url = "https://api.github.com/repos/JuztFlow/v4s-admin
         if (text_editor) {
           let text_editor_area = text_editor.querySelector(".angular-editor-textarea")
           let text_editor_placeholder = text_editor.querySelector(".angular-editor-placeholder")
-          if (text_editor_area) {
-            text_editor_area.setAttribute("data-placeholder-disabled", "true")
-            text_editor_area.innerHTML = "" + content
-          }
           if (text_editor_placeholder) {
             text_editor_placeholder.style.display = "none"
+          }
+          if (text_editor_area) {
+            text_editor_area.setAttribute("data-placeholder-disabled", "true")
+            const saved_phrase = localStorage.getItem("phrase")
+            const saved_gm_name = localStorage.getItem("gm-name")
+            let final_content = content + "<div><br></div><div>"
+            final_content += saved_phrase ? saved_phrase : ""
+            final_content += "</div><div><br></div>"
+            final_content += saved_gm_name ? saved_gm_name : ""
+            text_editor_area.innerHTML = "" + final_content
           }
         }
       })
