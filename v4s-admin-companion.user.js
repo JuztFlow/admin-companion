@@ -87,7 +87,7 @@ const template_repository_url = "https://api.github.com/repos/JuztFlow/v4s-admin
       await transaction.done
       const templates = await this.getMapFromResult(result)
       Log.debug("TemplateRepository: getAll() called; returning all templates from DB")
-      return
+      return templates
     }
 
     async getMapFromResult(result) {
