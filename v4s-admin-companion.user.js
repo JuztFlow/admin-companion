@@ -265,12 +265,12 @@ const template_repository_url = "https://api.github.com/repos/JuztFlow/v4s-admin
   class PageElementManager {
     #template_repository
     #observer = new MutationObserver(() => {
-      if (!this.#elementIsPresent("#ticket-templates") && this.#elementIsPresent(".angular-editor-wrapper")) {
+      if (!this.#elementIsPresent("#ticket-templates") && this.#elementIsPresent(".angular-editor-wrapper") && this.#allTicketAnswersPresent()) {
         Log.debug("PageElementManager: Ticket text editor detected -> we are on a specific Ticket page!")
         this.#deleteReadingDirectionSwitcher()
         this.#removeInputFields()
         this.#addTemplatesToNav()
-        return
+        this.#addCopyTemplateButtons()
       }
       if (
         !this.#elementIsPresent("#gm-name") &&
@@ -281,8 +281,25 @@ const template_repository_url = "https://api.github.com/repos/JuztFlow/v4s-admin
           "PageElementManager: Absence of ticket text editor detected and header container present -> we are on the Dashboard or Ticket Overview page!"
         )
         this.#deleteReadingDirectionSwitcher()
+        this.#removeCopyTemplateButtons()
         this.#removeTemplatesFromNav()
         this.#addInputFields()
+      }
+      //const mailInput = tempDiv.querySelector('input[name="mail"]');
+      //const statusSelect = tempDiv.querySelector('nb-select[name="status"]');
+      if (
+        !this.#elementIsPresent("#mail") &&
+        !this.#elementIsPresent("#status") &&
+        this.#elementIsPresent('input[name="mail"]') &&
+        this.#elementIsPresent('nb-select[name="status"]')
+      ) {
+        Log.debug("PageElementManager: Mail input and filter status select detected -> we are on the Ticket Overview page!")
+        const mail_input = document.querySelector('input[name="mail"]')
+        const status_select = document.querySelector('nb-select[name="status"]')
+        this.#loadSavedFilters(mail_input, status_select)
+        this.#addSaveFunctionalityToFilters(mail_input, status_select)
+        this.#updateFiltersStyle(mail_input, status_select)
+        this.#addResetButtons(mail_input, status_select)
         return
       }
     })
@@ -296,6 +313,10 @@ const template_repository_url = "https://api.github.com/repos/JuztFlow/v4s-admin
 
     #elementIsPresent(selector) {
       return document.querySelector(selector) !== null
+    }
+
+    #allTicketAnswersPresent() {
+      return document.querySelector("ngx-ticket-view").childElementCount >= 4
     }
 
     #addTemplatesToNav() {
@@ -368,10 +389,203 @@ const template_repository_url = "https://api.github.com/repos/JuztFlow/v4s-admin
       }
     }
 
+    #removeElementsBy(selector) {
+      let elements_to_remove = document.querySelectorAll(selector)
+      if (elements_to_remove) {
+        elements_to_remove.forEach((element) => {
+          element.remove()
+        })
+      }
+    }
+
     #deleteReadingDirectionSwitcher() {
       Log.debug("PageElementManager: Deleting reading direction switcher")
       this.#removeElementBy(".direction-switcher")
       Log.debug("PageElementManager: Reading direction switcher deleted")
+    }
+
+    #addCopyTemplateButtons() {
+      Log.debug("PageElementManager: Adding copy template buttons")
+      // Remove first and last element (ticket information and ticket editor)
+      let ticket_answers = Array.from(document.querySelector("ngx-ticket-view").querySelectorAll("nb-card")).slice(1, -1)
+      ticket_answers.forEach((ticket_answer) => {
+        let ticket_answer_header = ticket_answer.querySelector("nb-card-header")
+        let ticket_answer_body = ticket_answer.querySelector("nb-card-body")
+        if (!ticket_answer_header) {
+          Log.error("PageElementManager: Ticket answer header not found, skipping ...")
+          return
+        }
+        if (!ticket_answer_body) {
+          Log.error("PageElementManager: Ticket answer body not found, skipping ...")
+          return
+        }
+        ticket_answer_header.style.display = "flex"
+        ticket_answer_header.style.alignItems = "center"
+        ticket_answer_header.innerHTML = '<div style="flex: 1;">' + ticket_answer_header.innerHTML + "</div>"
+        let copy_button = this.#createCopyButton(ticket_answer_body)
+        ticket_answer_header.appendChild(copy_button)
+        Log.debug("PageElementManager: Copy button added to ticket answer")
+      })
+      let submit_button = document.querySelector("nb-card-footer button")
+      if (submit_button) {
+        submit_button.addEventListener("click", () => {
+          // observer that waits for css class pace-running to be present
+          const wait_for_pace_running = new MutationObserver(() => {
+            if (document.body.className.includes("pace-running")) {
+              Log.debug("PageElementManager: Pace running detected, starting to wait for pace-done ...")
+              wait_for_pace_running.disconnect()
+              wait_for_pace_done_and_all_ticket_answers.observe(document.documentElement, { childList: true, subtree: true, attributes: true })
+            }
+          })
+          const wait_for_pace_done_and_all_ticket_answers = new MutationObserver(() => {
+            if (document.body.className.includes("pace-done") && this.#allTicketAnswersPresent()) {
+              Log.debug("PageElementManager: All ticket answers present, re-adding copy buttons ...")
+              this.#addCopyTemplateButtons()
+              wait_for_pace_done_and_all_ticket_answers.disconnect()
+            }
+          })
+          wait_for_pace_running.observe(document.documentElement, { childList: true, subtree: true, attributes: true })
+        })
+      }
+    }
+
+    #removeCopyTemplateButtons() {
+      Log.debug("PageElementManager: Removing copy template buttons")
+      this.#removeElementsBy(".copy-button")
+    }
+
+    #createCopyButton(ticket_answer_body) {
+      Log.debug("PageElementManager: Creating copy button")
+      let copy_button = Object.assign(document.createElement("button"), {
+        className: "copy-button appearance-filled size-medium status-basic shape-rectangle nb-transition",
+        style: "float: right; margin-right: 1em;",
+        textContent: "Copy Template",
+      })
+      copy_button.setAttribute("nbbutton", "")
+      copy_button.addEventListener("click", function () {
+        let text_to_copy = ticket_answer_body.innerHTML
+        navigator.clipboard.writeText(text_to_copy)
+        Log.info("Template with length " + text_to_copy.length + " copied to clipboard!")
+      })
+      Log.debug("PageElementManager: Copy button created")
+      return copy_button
+    }
+
+    #loadSavedFilters(mail_input, status_select) {
+      Log.debug("PageElementManager: Loading saved filters")
+      const saved_mail = localStorage.getItem("mail")
+      const saved_status = localStorage.getItem("status")
+      if (saved_mail) {
+        mail_input.value = saved_mail
+        mail_input.dispatchEvent(new Event("input", { bubbles: true }))
+        mail_input.dispatchEvent(new Event("change", { bubbles: true }))
+        mail_input.dispatchEvent(new Event("blur", { bubbles: true }))
+      }
+      if (saved_status) {
+        status_select.click()
+        const option_list = document.querySelector(".option-list")
+        if (option_list) {
+          const status_options = option_list.querySelectorAll("nb-option")
+          status_options.forEach((status_option) => {
+            if (status_option.innerText === saved_status) {
+              status_option.click()
+            }
+          })
+        }
+        status_select.click()
+      }
+      Log.debug("PageElementManager: Saved filters loaded")
+    }
+
+    #addSaveFunctionalityToFilters(mail_input, status_select) {
+      Log.debug("PageElementManager: Adding save functionality")
+      // when enter is pressed
+      mail_input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          localStorage.setItem("mail", mail_input.value)
+        }
+      })
+
+      status_select.click()
+      const option_list = document.querySelector(".option-list")
+      if (option_list) {
+        const status_options = option_list.querySelectorAll("nb-option")
+        status_options.forEach((status_option) => {
+          status_option.addEventListener("click", function () {
+            localStorage.setItem("status", status_option.innerText)
+          })
+        })
+      }
+
+      Log.debug("PageElementManager: Save functionality added")
+    }
+
+    #updateFiltersStyle(mail_input, status_select) {
+      Log.debug("PageElementManager: Updating filters style")
+      mail_input.id = "mail"
+      mail_input.placeholder = "user@domain.com"
+      mail_input.style.width = "320px"
+      mail_input.previousElementSibling.innerText += ":"
+      mail_input.previousElementSibling.style.width = "6em"
+      status_select.id = "status"
+      status_select.previousElementSibling.innerText += ":"
+      status_select.previousElementSibling.style.width = "6em"
+    }
+
+    #addResetButtons(mail_input, status_select) {
+      Log.debug("PageElementManager: Adding reset buttons")
+      let reset_button_mail = this.#createMailResetButton(mail_input)
+      mail_input.insertAdjacentElement("afterend", reset_button_mail)
+      let reset_button_status = this.#createStatusResetButton(status_select)
+      status_select.insertAdjacentElement("afterend", reset_button_status)
+      Log.debug("PageElementManager: Reset buttons added")
+    }
+
+    #createMailResetButton(mail_input) {
+      Log.debug("PageElementManager: Creating email reset button")
+      let reset_button = Object.assign(document.createElement("button"), {
+        className: "reset-button appearance-filled size-medium status-danger shape-rectangle nb-transition",
+        style: "margin-left: 1em;",
+        textContent: "⟳",
+      })
+      reset_button.setAttribute("nbbutton", "")
+      reset_button.addEventListener("click", function () {
+        mail_input.value = ""
+        localStorage.removeItem("mail")
+        mail_input.dispatchEvent(new Event("input", { bubbles: true }))
+        mail_input.dispatchEvent(new Event("change", { bubbles: true }))
+        mail_input.dispatchEvent(new Event("blur", { bubbles: true }))
+        Log.info("Email filter reset!")
+      })
+      Log.debug("PageElementManager: Email reset button created")
+      return reset_button
+    }
+
+    #createStatusResetButton(status_select) {
+      Log.debug("PageElementManager: Creating status reset button")
+      let reset_button = Object.assign(document.createElement("button"), {
+        className: "reset-button appearance-filled size-medium status-danger shape-rectangle nb-transition",
+        style: "margin-left: 1em;",
+        textContent: "⟳",
+      })
+      reset_button.setAttribute("nbbutton", "")
+      reset_button.addEventListener("click", function () {
+        status_select.click()
+        const option_list = document.querySelector(".option-list")
+        if (option_list) {
+          const status_options = option_list.querySelectorAll("nb-option")
+          status_options.forEach((status_option) => {
+            if (status_option.innerText === "Open") {
+              status_option.click()
+            }
+          })
+        }
+        status_select.click()
+        localStorage.setItem("status", "Open")
+        Log.info("Status filter reset!")
+      })
+      Log.debug("PageElementManager: Status reset button created")
+      return reset_button
     }
 
     #createCategoryItem(name, content) {
@@ -515,8 +729,9 @@ const template_repository_url = "https://api.github.com/repos/JuztFlow/v4s-admin
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   function applyTheme(theme, is_initial_load = false) {
-    Log.debug(is_initial_load ? "Applying pre-loaded theme ..." : "Applying theme ...")
+    Log.debug(is_initial_load ? "Applying pre-loaded theme: " + theme : "Applying theme: " + theme)
     const updated_body_classname = document.body.className.includes("pace-done") ? " " + theme + " pace-done" : "pace-running " + theme
+    Log.debug("Applying updated body class name: " + updated_body_classname)
     document.body.className = updated_body_classname
     Log.debug(is_initial_load ? "Pre-loaded theme applied: " + theme : "Theme applied: " + theme)
   }
@@ -535,7 +750,7 @@ const template_repository_url = "https://api.github.com/repos/JuztFlow/v4s-admin
       if (!this.#documentIsReady()) {
         return
       }
-      if (!this.#elementIsPresent("#cdk-overlay-0 .option-list")) {
+      if (!this.#elementIsPresent(".option-list")) {
         return
       }
 
@@ -543,7 +758,30 @@ const template_repository_url = "https://api.github.com/repos/JuztFlow/v4s-admin
 
       this.#update_theme_switcher.disconnect()
 
-      let drowpdown_menu = document.querySelector("#cdk-overlay-0 .option-list")
+      let overlay_container = document.querySelector(".cdk-overlay-connected-position-bounding-box")
+
+      if (!overlay_container) {
+        Log.debug("ThemeManager: Overlay container not found, resuming observer ...")
+        this.#update_theme_switcher.observe(document.documentElement, { childList: true, subtree: true, attributes: true })
+        return
+      }
+
+      let overlay_pane = overlay_container.querySelector(".cdk-overlay-pane")
+
+      if (!overlay_pane) {
+        Log.debug("ThemeManager: Overlay pane not found, resuming observer ...")
+        this.#update_theme_switcher.observe(document.documentElement, { childList: true, subtree: true, attributes: true })
+        return
+      }
+
+      let drowpdown_menu = overlay_pane.querySelector(".option-list")
+
+      if (!drowpdown_menu) {
+        Log.debug("ThemeManager: Dropdown menu not found, resuming observer ...")
+        this.#update_theme_switcher.observe(document.documentElement, { childList: true, subtree: true, attributes: true })
+        return
+      }
+
       let menu_options = drowpdown_menu.children
 
       if (!this.#elementIsPresent(".updated-theme-switcher")) {
@@ -572,13 +810,16 @@ const template_repository_url = "https://api.github.com/repos/JuztFlow/v4s-admin
 
     #update_selected_theme = new MutationObserver(() => {
       if (!this.#documentIsReady()) {
+        Log.debug("ThemeManager: Document is not ready yet ...")
         return
       }
       if (!this.#elementIsPresent(".select-button nb-icon")) {
+        Log.debug("ThemeManager: Select button not found ...")
         return
       }
       let select_theme_button = document.querySelector(".select-button")
       if (!select_theme_button.firstChild.nodeType === Node.TEXT_NODE || select_theme_button.firstChild.textContent === "") {
+        Log.debug("ThemeManager: Select button is present but empty ...")
         return
       }
 
