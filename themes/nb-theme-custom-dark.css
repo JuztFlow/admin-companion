@@ -2377,6 +2377,9 @@ details {
 .nb-theme-custom-dark nb-layout.window-mode .layout nb-layout-header nav {
   max-width: 1920px;
   margin: 0 auto;
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
 }
 @media screen and (min-width: 1940px) {
   .nb-theme-custom-dark nb-layout.window-mode {
