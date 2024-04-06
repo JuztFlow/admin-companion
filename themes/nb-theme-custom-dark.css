@@ -9376,10 +9376,10 @@ details {
 }
 .nb-theme-custom-dark ng2-smart-table tbody tr.selected,
 .nb-theme-custom-dark ng2-smart-table tbody tr:hover {
-  background: #ff2345 !important;
+  background: #404040 !important; /* table hover */
 }
 .nb-theme-custom-dark ng2-smart-table tbody tr:nth-child(2n) {
-  background-color: #454545;
+  background-color: #353535; /* table every second child*/
 }
 .nb-theme-custom-dark ng2-smart-table th.ng2-smart-actions-title-add a {
   display: flex;
