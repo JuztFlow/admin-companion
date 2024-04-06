@@ -9500,7 +9500,7 @@ details {
 .nb-theme-custom-dark ng2-smart-table nav.ng2-smart-pagination-nav .pagination li a:hover {
   background-color: transparent;
   border-color: #fff;
-  color: #fff;
+  color: #aaa;
   text-decoration: none;
 }
 [dir="ltr"] .nb-theme-custom-dark ng2-smart-table nav.ng2-smart-pagination-nav .pagination li:first-child > span,
