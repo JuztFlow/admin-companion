@@ -9375,10 +9375,14 @@ details {
 }
 .nb-theme-custom-dark ng2-smart-table tbody tr.selected,
 .nb-theme-custom-dark ng2-smart-table tbody tr:hover {
+<<<<<<< HEAD
   background: #383838 !important; /* table hover & first table element */
+=======
+  background: #404040 !important; /* table hover */
+>>>>>>> parent of 4c02ff4 (Theme update)
 }
 .nb-theme-custom-dark ng2-smart-table tbody tr:nth-child(2n) {
-  background-color: #2b2b2b; /* table every second child*/
+  background-color: #353535; /* table every second child*/
 }
 .nb-theme-custom-dark ng2-smart-table th.ng2-smart-actions-title-add a {
   display: flex;
