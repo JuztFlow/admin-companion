@@ -8074,13 +8074,13 @@ details {
   padding-left: 2.75rem;
 }
 .nb-theme-custom-dark nb-option {
-  background-color: #222b45;
+  background-color: #292929;
   color: #fff;
   font-family: Open Sans, sans-serif;
 }
 .nb-theme-custom-dark nb-option.active {
   background-color: rgba(143, 155, 179, 0.24);
-  color: #fff;
+  color: #777777;
 }
 .nb-theme-custom-dark nb-option.selected {
   background-color: #fff;
