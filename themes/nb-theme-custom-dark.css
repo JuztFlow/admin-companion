@@ -6429,6 +6429,7 @@ details {
   background-color: #192038;
   border-color: #101426;
   color: #ffffffa5;
+}
 .nb-theme-custom-dark [nbInput].status-primary:disabled::-webkit-input-placeholder {
   color: #ffffffa5;
 }
