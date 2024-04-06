@@ -9376,7 +9376,7 @@ details {
 }
 .nb-theme-custom-dark ng2-smart-table tbody tr.selected,
 .nb-theme-custom-dark ng2-smart-table tbody tr:hover {
-  background: #454545 !important;
+  background: #ff2345 !important;
 }
 .nb-theme-custom-dark ng2-smart-table tbody tr:nth-child(2n) {
   background-color: #454545;
