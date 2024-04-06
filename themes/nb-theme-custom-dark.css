@@ -2404,7 +2404,7 @@ details {
 }
 
 .nb-theme-custom-dark nb-layout.window-mode .layout nb-layout-header nav ngx-header div div a:first-of-type {
-  padding: 0;
+  padding: 0 !important;
   margin-right: 1.25rem;
 }
 
