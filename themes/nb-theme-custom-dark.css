@@ -9366,7 +9366,7 @@ details {
   transform: translateY(-50%) rotate(180deg);
 }
 .nb-theme-custom-dark ng2-smart-table thead tr {
-  background: #454545;
+  background: #1c1c1c;
 }
 .nb-theme-custom-dark ng2-smart-table thead tr.ng2-smart-filters th {
   padding: 0.375rem 0.5rem;
@@ -9500,7 +9500,7 @@ details {
 .nb-theme-custom-dark ng2-smart-table nav.ng2-smart-pagination-nav .pagination li a:hover {
   background-color: transparent;
   border-color: #fff;
-  color: #ff2345; /* hover color table*/
+  color: #ff2345;
   text-decoration: none;
 }
 [dir="ltr"] .nb-theme-custom-dark ng2-smart-table nav.ng2-smart-pagination-nav .pagination li:first-child > span,
