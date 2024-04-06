@@ -3645,10 +3645,10 @@ details {
   line-height: 3rem;
 }
 .nb-theme-custom-dark nb-search-field .search input::-webkit-input-placeholder {
-  color: #8f9bb3;
+  color: #ffffff9e;
 }
 .nb-theme-custom-dark nb-search-field .search input::-moz-placeholder {
-  color: #8f9bb3;
+  color: #ffffffa5;
 }
 .nb-theme-custom-dark nb-search-field .search input:-ms-input-placeholder {
   color: #8f9bb3;
