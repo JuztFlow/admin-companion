@@ -9526,8 +9526,8 @@ details {
 .nb-theme-custom-dark ng2-smart-table nav.ng2-smart-pagination-nav .pagination li.active a,
 .nb-theme-custom-dark ng2-smart-table nav.ng2-smart-pagination-nav .pagination li.active a:focus,
 .nb-theme-custom-dark ng2-smart-table nav.ng2-smart-pagination-nav .pagination li.active a:hover {
-  color: #fff;
-  background-color: #36f;
+  color: #1c1c1c;
+  background-color: #fff;
 }
 .nb-theme-custom-dark nb-auth-block .text-link {
   color: #8f9bb3;
