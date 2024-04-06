@@ -2385,7 +2385,7 @@ details {
   height: 4.75rem;
   width: 100%;
 }
-.nb-theme-custom-dark nb-layout.window-mode .layout nb-layout-header nav:first-child {
+.nb-theme-custom-dark nb-layout.window-mode .layout nb-layout-header nav ngx-header {
   display: flex;
   justify-content: space-between;
   width: 100%;
