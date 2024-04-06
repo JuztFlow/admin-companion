@@ -3056,7 +3056,7 @@ details {
 .nb-theme-custom-dark nb-card.status-basic nb-card-header {
   background-color: #232323;
   border-bottom-width: 0;
-  border-bottom-color: #000000;
+  border-bottom-color: #ffffff;
   color: #fff;
 }
 .nb-theme-custom-dark nb-card.status-basic nb-card-header a,
@@ -7207,7 +7207,7 @@ details {
 }
 .nb-theme-custom-dark nb-select.appearance-outline.status-primary .select-button.placeholder,
 .nb-theme-custom-dark nb-select.appearance-outline.status-primary .select-button nb-icon {
-  color: #8f9bb3;
+  color: #fff;
 }
 .nb-theme-custom-dark nb-select.appearance-outline.status-primary .select-button:focus {
   background-color: #303030;
@@ -9316,7 +9316,7 @@ details {
   font-size: 0.9375rem;
   font-weight: 400;
   line-height: 1.25rem;
-  color: #fff;
+  color: #000;
 }
 .nb-theme-custom-dark ng2-smart-table table tr td,
 .nb-theme-custom-dark ng2-smart-table table tr th {
@@ -9337,7 +9337,7 @@ details {
 .nb-theme-custom-dark ng2-smart-table table tr.ng2-smart-titles th a:active,
 .nb-theme-custom-dark ng2-smart-table table tr.ng2-smart-titles th a:hover,
 .nb-theme-custom-dark ng2-smart-table table tr.ng2-smart-titles th a:visited {
-  color: #fff;
+  color: #000;
   text-decoration: none;
 }
 .nb-theme-custom-dark ng2-smart-table table tr.ng2-smart-titles th a.sort.asc,
@@ -9487,20 +9487,20 @@ details {
   font-size: 0.875rem;
   line-height: 1rem;
   background-color: transparent;
-  color: #36f;
+  color: #fff;
   padding: 0.75rem 1.25rem;
   border: none;
 }
 .nb-theme-custom-dark ng2-smart-table nav.ng2-smart-pagination-nav .pagination li > span:focus,
 .nb-theme-custom-dark ng2-smart-table nav.ng2-smart-pagination-nav .pagination li a:focus {
-  border-color: #36f;
-  color: #36f;
+  border-color: #fff;
+  color: #fff;
 }
 .nb-theme-custom-dark ng2-smart-table nav.ng2-smart-pagination-nav .pagination li > span:hover,
 .nb-theme-custom-dark ng2-smart-table nav.ng2-smart-pagination-nav .pagination li a:hover {
   background-color: transparent;
-  border-color: #36f;
-  color: #36f;
+  border-color: #fff;
+  color: #fff;
   text-decoration: none;
 }
 [dir="ltr"] .nb-theme-custom-dark ng2-smart-table nav.ng2-smart-pagination-nav .pagination li:first-child > span,
@@ -9545,10 +9545,10 @@ details {
   }
 }
 .nb-theme-custom-dark .pace .pace-progress {
-  background: #36f;
+  background: #fff;
 }
 .nb-theme-custom-dark .pace .pace-progress-inner {
-  box-shadow: 0 0 10px #36f, 0 0 5px #36f;
+  box-shadow: 0 0 10px #fff, 0 0 5px #fff;
 }
 .nb-theme-custom-dark .pace .pace-activity {
   display: none;
