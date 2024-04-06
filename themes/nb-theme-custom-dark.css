@@ -2335,20 +2335,20 @@ details {
   height: 0 !important;
 }
 .nb-theme-custom-dark nb-layout .scrollable-container {
-  scrollbar-face-color: #101426;
-  scrollbar-track-color: #192038;
+  scrollbar-face-color: #ffffff;
+  scrollbar-track-color: #ffffff;
 }
 .nb-theme-custom-dark nb-layout .scrollable-container::-webkit-scrollbar {
   width: 0.3125rem;
   height: 0.3125rem;
 }
 .nb-theme-custom-dark nb-layout .scrollable-container::-webkit-scrollbar-thumb {
-  background: #101426;
+  background: #ffffff;
   cursor: pointer;
   border-radius: 0.15625rem;
 }
 .nb-theme-custom-dark nb-layout .scrollable-container::-webkit-scrollbar-track {
-  background: #fff;/*scrollbar color maybe*/
+  background: #252525;/*scrollbar color maybe*/
 }
 .nb-theme-custom-dark nb-layout.with-scroll .scrollable-container {
   overflow: auto;
@@ -2384,6 +2384,10 @@ details {
   align-items: center;
   justify-content: flex-start;
   display: flex;
+  color: #6c6d6e;
+  box-shadow: 0 0.5rem 1rem 0 rgba(44,51,73,.1);
+  height: 4.75rem;
+
 }
 @media screen and (min-width: 1940px) {
   .nb-theme-custom-dark nb-layout.window-mode {
