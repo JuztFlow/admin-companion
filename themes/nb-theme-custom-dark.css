@@ -2389,7 +2389,7 @@ details {
   color: #6c6d6e;
   box-shadow: 0 0.5rem 1rem 0 rgba(44,51,73,.1);
   height: 4.75rem;
-
+  width: 100%;
 }
 @media screen and (min-width: 1940px) {
   .nb-theme-custom-dark nb-layout.window-mode {
