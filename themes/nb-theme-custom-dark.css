@@ -2414,6 +2414,10 @@ details {
   text-decoration: none;
 }
 
+.nb-theme-custom-dark nb-layout.window-mode .layout nb-layout-header nav ngx-header div div a nb-icon {
+  font-size: 1.75rem;
+}
+
 .nb-theme-custom-dark nb-layout.window-mode .layout nb-layout-header nav ngx-header div nb-select {
   margin-right: 2rem;
 }
