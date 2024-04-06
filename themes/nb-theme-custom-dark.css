@@ -2414,7 +2414,7 @@ details {
   text-decoration: none;
 }
 
-.nb-theme-custom-dark nb-layout.window-mode .layout nb-layout-header nav ngx-header div div a nb-icon {
+.nb-theme-custom-dark nb-layout.window-mode .layout nb-layout-header nav ngx-header div div a:first-of-type nb-icon {
   font-size: 1.75rem;
 }
 
