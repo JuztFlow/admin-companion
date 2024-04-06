@@ -2397,6 +2397,16 @@ details {
   width: auto;
 }
 
+.nb-theme-custom-dark nb-layout.window-mode .layout nb-layout-header nav ngx-header div div {
+  display: flex;
+  align-items: center;
+  width: 14.75rem;
+}
+
+.nb-theme-custom-dark nb-layout.window-mode .layout nb-layout-header nav ngx-header div nb-select {
+  margin-right: 2rem;
+}
+
 @media screen and (min-width: 1940px) {
   .nb-theme-custom-dark nb-layout.window-mode {
     padding-top: 1.1875rem;
