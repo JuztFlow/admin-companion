@@ -6370,12 +6370,12 @@ details {
   color: #8f9bb3;
 }
 .nb-theme-custom-dark [nbInput].status-basic:focus {
-  background-color: #222b45;
-  border-color: #36f;
+  background-color: #1c1c1c;
+  border-color: #fff;
 }
 .nb-theme-custom-dark [nbInput].status-basic:hover {
-  background-color: #151a30;
-  border-color: #101426;
+  background-color: #1c1c1c;
+  border-color: #000;
 }
 .nb-theme-custom-dark [nbInput].status-basic:disabled {
   background-color: #192038;
