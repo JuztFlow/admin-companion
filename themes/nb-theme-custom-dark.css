@@ -10,6 +10,10 @@
   width: 100%;
 }
 
+[_nghost-kxq-c68] nb-layout-header {
+  display: block;
+}
+
 .cdk-overlay-container {
   position: fixed;
   z-index: 1000;
@@ -2344,7 +2348,7 @@ details {
   border-radius: 0.15625rem;
 }
 .nb-theme-custom-dark nb-layout .scrollable-container::-webkit-scrollbar-track {
-  background: #192038;
+  background: #fff;/*scrollbar color maybe*/
 }
 .nb-theme-custom-dark nb-layout.with-scroll .scrollable-container {
   overflow: auto;
