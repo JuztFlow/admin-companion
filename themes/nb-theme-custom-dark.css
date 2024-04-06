@@ -10,10 +10,6 @@
   width: 100%;
 }
 
-[_nghost-kxq-c68] nb-layout-header {
-  display: block;
-}
-
 .cdk-overlay-container {
   position: fixed;
   z-index: 1000;
@@ -2377,8 +2373,6 @@ details {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
 }
 .nb-theme-custom-dark nb-layout.window-mode .layout nb-layout-header nav {
   max-width: 1920px;
@@ -2391,6 +2385,12 @@ details {
   height: 4.75rem;
   width: 100%;
 }
+.nb-theme-custom-dark nb-layout.window-mode .layout nb-layout-header nav:first-child {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 @media screen and (min-width: 1940px) {
   .nb-theme-custom-dark nb-layout.window-mode {
     padding-top: 1.1875rem;
