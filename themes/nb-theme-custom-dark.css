@@ -684,7 +684,7 @@
   min-width: 300px;
 }
 .nb-theme-custom-dark nb-layout.window-mode {
-  background: #151a30;
+  background: #040404;
   display: block;
 }
 .nb-theme-custom-dark nb-layout.window-mode .scrollable-container {
@@ -704,7 +704,7 @@
   justify-content: flex-start;
   display: flex;
   color: #6c6d6e;
-  box-shadow: 0 0.5rem 1rem 0 rgba(44,51,73,.1);
+  box-shadow: 0 0.5rem 1rem 0 rgba(69, 69, 69, 0.406);
   height: 4.75rem;
   width: 100%;
 }
@@ -768,7 +768,7 @@
   }
   .nb-theme-custom-dark nb-layout.window-mode .scrollable-container {
     height: calc(100vh - 1.1875rem);
-    box-shadow: 0 0.5rem 1rem 0 #1a1f33;
+    box-shadow: 0 0.5rem 1rem 0 #585858;
   }
   .nb-theme-custom-dark nb-layout.window-mode nb-layout.with-scroll .scrollable-container {
     height: calc(100vh - 1.1875rem);
@@ -796,7 +796,7 @@
   }
   .nb-theme-custom-dark nb-layout.window-mode .scrollable-container {
     height: calc(100vh - 2.375rem);
-    box-shadow: 0 0.5rem 1rem 0 #1a1f33;
+    box-shadow: 0 0.5rem 1rem 0 #696969;
   }
   .nb-theme-custom-dark nb-layout.window-mode nb-layout.with-scroll .scrollable-container {
     height: calc(100vh - 2.375rem);
@@ -824,7 +824,7 @@
   }
   .nb-theme-custom-dark nb-layout.window-mode .scrollable-container {
     height: calc(100vh - 4.75rem);
-    box-shadow: 0 0.5rem 1rem 0 #1a1f33;
+    box-shadow: 0 0.5rem 1rem 0 #696969;
   }
   .nb-theme-custom-dark nb-layout.window-mode nb-layout.with-scroll .scrollable-container {
     height: calc(100vh - 4.75rem);
@@ -1593,7 +1593,7 @@
   box-shadow: none;
 }
 .nb-theme-custom-dark nb-tabset .tabset {
-  border-bottom: 1px solid #151a30;
+  border-bottom: 1px solid #696969;
 }
 .nb-theme-custom-dark nb-tabset .tab-link {
   background-color: transparent;
@@ -2138,13 +2138,13 @@
   position: relative;
 }
 .nb-theme-custom-dark nb-checkbox .native-input:focus:not(:checked) + .custom-checkbox {
-  box-shadow: 0 0 0 0.375rem #2e3a59;
+  box-shadow: 0 0 0 0.375rem #696969;
 }
 .nb-theme-custom-dark nb-checkbox .native-input:focus:not(:checked) + .custom-checkbox:not(:hover):not(:active) {
-  box-shadow: 0 0 0 0.375rem #2e3a59, inset 0 0 0 100vmax #2e3a59;
+  box-shadow: 0 0 0 0.375rem #696969, inset 0 0 0 100vmax #696969;
 }
 .nb-theme-custom-dark nb-checkbox .native-input:focus:checked + .custom-checkbox {
-  box-shadow: 0 0 0 0.375rem #2e3a59;
+  box-shadow: 0 0 0 0.375rem #696969;
 }
 .nb-theme-custom-dark nb-checkbox nb-icon {
   position: absolute;
@@ -2625,7 +2625,7 @@
   left: 0;
 }
 .nb-theme-custom-dark nb-toggle .native-input:enabled:focus + .toggle {
-  box-shadow: 0 0 0 0.375rem #2e3a59;
+  box-shadow: 0 0 0 0.375rem #696969;
 }
 .nb-theme-custom-dark nb-toggle .native-input:disabled + .toggle {
   cursor: default;
@@ -3680,7 +3680,7 @@
 }
 .nb-theme-custom-dark nb-accordion {
   display: block;
-  box-shadow: 0 0.5rem 1rem 0 #1a1f33;
+  box-shadow: 0 0.5rem 1rem 0 #696969;
   border-radius: 0.25rem;
 }
 .nb-theme-custom-dark nb-accordion nb-accordion-item-header {
@@ -3750,7 +3750,7 @@
 }
 .nb-theme-custom-dark [nbButton]:focus {
   outline: none;
-  box-shadow: 0 0 0 0.375rem #2e3a59;
+  box-shadow: 0 0 0 0.375rem #696969;
 }
 .nb-theme-custom-dark [nbButton][disabled] {
   cursor: default;
@@ -4092,10 +4092,10 @@
   text-transform: uppercase;
 }
 .nb-theme-custom-dark [nbButton].appearance-outline:focus {
-  box-shadow: 0 0 0 0.375rem #2e3a59;
+  box-shadow: 0 0 0 0.375rem #696969;
 }
 .nb-theme-custom-dark [nbButton].appearance-outline:focus:not(:hover):not(:active) {
-  box-shadow: 0 0 0 0.375rem #2e3a59, inset 0 0 0 100vmax #2e3a59;
+  box-shadow: 0 0 0 0.375rem #696969, inset 0 0 0 100vmax #696969;
 }
 .nb-theme-custom-dark [nbButton].appearance-outline.size-tiny {
   padding: 0.3125rem 0.625rem;
@@ -4296,7 +4296,7 @@
   box-shadow: 0 0 0 0.375rem #2e3a59;
 }
 .nb-theme-custom-dark [nbButton].appearance-ghost:focus:not(:hover):not(:active) {
-  box-shadow: 0 0 0 0.375rem #2e3a59, inset 0 0 0 100vmax #2e3a59;
+  box-shadow: 0 0 0 0.375rem #696969, inset 0 0 0 100vmax #696969;
 }
 .nb-theme-custom-dark [nbButton].appearance-ghost.size-tiny {
   padding: 0.3125rem 0.625rem;
@@ -4501,7 +4501,7 @@
 }
 .nb-theme-custom-dark [nbButton].appearance-hero.status-basic:focus {
   background-image: linear-gradient(90deg, #edf1f7, #e4e9f2);
-  box-shadow: 0 0 0 0 #8f9bb3, 0 0 0 0 #2e3a59, 0 0 transparent, 0 0 0 0.375rem #2e3a59;
+  box-shadow: 0 0 0 0 #8f9bb3, 0 0 0 0 #696969, 0 0 transparent, 0 0 0 0.375rem #696969;
 }
 .nb-theme-custom-dark [nbButton].appearance-hero.status-basic:hover {
   background-image: linear-gradient(90deg, #fff, #f7f9fc);
