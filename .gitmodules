@@ -1,0 +1,3 @@
+[submodule "typescript-to-userscript-admincompanion"]
+	path = typescript-to-userscript-admincompanion
+	url = https://github.com/JuztFlow/typescript-to-userscript-admincompanion.git
