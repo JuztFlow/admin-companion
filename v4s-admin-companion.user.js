@@ -23,7 +23,7 @@
 const application_name = "v4s-admin-companion"
 //
 // - URL to the template repository, must be a valid GitHub API URL with the following structure: "https://api.github.com/repos/<username>/<repository>/contents/<path>"
-const template_repository_url = "https://api.github.com/repos/JuztFlow/v4s-admin-companion/contents/templates"
+const template_repository_url = "https://api.github.com/repos/JuztFlow/admin-companion/contents/templates"
 //
 // - Uncomment to: disable specific logging output
 // console.log = function () {}
