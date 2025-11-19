@@ -1,0 +1,17 @@
+{
+  "cSpell.words": ["Jombo", "Tampermonkey"],
+  "actionButtons": {
+    "defaultColor": "#ff0034",
+    "loadNpmCommands": false,
+    "reloadButton": "$(sync) Reload Action Buttons",
+    "inheritGlobalCommands": false,
+    "commands": [
+      {
+        "name": "$(package) npm run build",
+        "color": "orange",
+        "cwd": "${workspaceFolder}/typescript-to-userscript-admincompanion",
+        "command": "npm run build"
+      }
+    ]
+  }
+}
