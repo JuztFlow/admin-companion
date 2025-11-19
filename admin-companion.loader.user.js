@@ -17,7 +17,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // - Set to 'true' to load from local development server, 'false' to load from GitHub:
-const is_development = true
+const is_development = false
 //
 // - Repository URL (must end with a slash, e.g. "https://api.github.com/repos/<username>/<repository>/contents/<path>/templates/"):
 const repository_url = "https://api.github.com/repos/JuztFlow/admin-companion/contents/templates/"
@@ -30,7 +30,7 @@ const website_abbreviation = "4V"
 ;(async function () {
   const script_url = is_development
     ? "http://127.0.0.1:5500/admin-companion.prod.user.js"
-    : "https://github.com/JuztFlow/admin-companion/raw/refs/heads/main/admin-companion.prod.user.js"
+    : "https://raw.githubusercontent.com/JuztFlow/admin-companion/main/admin-companion.prod.user.js"
   const response = await fetch(script_url)
   const code = await response.text()
   const modified_code = code.replace(/t\.repository_url\s*=\s*"TO BE REPLACED BY SCRIPT LOADER"/, `t.repository_url="${repository_url}"`)
