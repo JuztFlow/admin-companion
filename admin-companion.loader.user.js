@@ -19,6 +19,9 @@
 // - Set to 'true' to load from local development server, 'false' to load from GitHub:
 const is_development = true
 //
+// - Repository URL (must end with a slash, e.g. "https://api.github.com/repos/<username>/<repository>/contents/<path>/templates/"):
+const repository_url = "https://api.github.com/repos/JuztFlow/admin-companion/contents/templates/"
+//
 // - Website Abbreviation (must be either "4V" or "4C"):
 const website_abbreviation = "4V"
 //
@@ -30,6 +33,7 @@ const website_abbreviation = "4V"
     : "https://github.com/JuztFlow/admin-companion/raw/refs/heads/main/admin-companion.prod.user.js"
   const response = await fetch(script_url)
   const code = await response.text()
-  const modified_code = code.replace(/t\.website_abbreviation\s*=\s*"TO BE REPLACED BY SCRIPT LOADER"/, `t.website_abbreviation="${website_abbreviation}"`)
+  const modified_code = code.replace(/t\.repository_url\s*=\s*"TO BE REPLACED BY SCRIPT LOADER"/, `t.repository_url="${repository_url}"`)
+                            .replace(/t\.website_abbreviation\s*=\s*"TO BE REPLACED BY SCRIPT LOADER"/, `t.website_abbreviation="${website_abbreviation}"`)
   eval(modified_code)
 })()
